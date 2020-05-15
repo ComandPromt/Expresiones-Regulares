@@ -1,44 +1,55 @@
 # Expresiones-Regulares
-Regular Expresions
+
+## Regular Expresions
 
 # Comprobar URL
+
 ~~~js
+
 let url = /^(http|ftp|https)\:\/\/[a-z0-9\_-]+(\.[a-z0-9\_-]+)*(\:[0-9]{2,4})?$/;
 
-document.write(url.test ('https://google.es:8080')+"<br/>"); //true            
-document.write(url.test ('ftp://ftp.com.es')+"<br/>"); //true          
-document.write(url.test ('file:///bin/bash')+"<br/>");  //false            
-document.write(url.test ('https://google.es/index.html')+"<br/>");//false
+document.write(url.test ('https://google.es:8080')+"<br/>"); //ok            
+document.write(url.test ('ftp://ftp.com.es')+"<br/>"); //ok          
+document.write(url.test ('file:///bin/bash')+"<br/>");  //fail            
+document.write(url.test ('https://google.es/index.html')+"<br/>");//fail
+
 ~~~
 
 # Validación de teléfono
+
 ~~~js
 let telefono = /^[6789][0-9]{8}$/;
-~~~
-telefono.test ('123456789');  // false
-telefono.test ( '95566622');  // false
-telefono.test ('95566622a');  // false
-telefono.test ('609123456');  // true
 
+telefono.test ('123456789');  // fail
+telefono.test ( '95566622');  // fail
+telefono.test ('95566622a');  // fail
+telefono.test ('609123456');  // ok
+
+~~~
 # Ejemplo de validación de código postal
 
 ~~~js
+
 let codigoPostal = /^[0-9]{4,5}$/;
+
+codigoPostal.test ( '14500');  // ok
+codigoPostal.test (  '9500');  // ok
+codigoPostal.test ('A11450');  // fail
+codigoPostal.test (     '1');  // fail
+
 ~~~
-codigoPostal.test ( '14500');  // true
-codigoPostal.test (  '9500');  // true
-codigoPostal.test ('A11450');  // false
-codigoPostal.test (     '1');  // false
 
 ## Ejemplo comprobar email
+
 ~~~js
     let email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    email.test ('j.amj2000@gmail.com');            // ok
+    email.test ('pepe_lopez@ventas.tienda.com');  // ok
+    email.test ('pepe#lopez@tienda.com');         // fail
+    email.test ('pepe_lopez@ventas/tienda.com');  // fail
 ~~~
-    email.test ('j.amj2000@gmail.com');            // true
-    email.test ('pepe_lopez@ventas.tienda.com');  // true
-    email.test ('pepe#lopez@tienda.com');         // false
-    email.test ('pepe_lopez@ventas/tienda.com');  // false
-    
+
 # Contraseña segura
 
 Crea un programa que pida al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos.
