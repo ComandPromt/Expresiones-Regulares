@@ -67,7 +67,7 @@ Tiene uno de los siguientes valores: guión alto, guión bajo, arroba, almohadil
 Si cumple con todos los requisitos se considera una contraseña segura, de lo contrario mostrará que es una contraseña no segura.
 
 ~~~js
-<script type="text/javascript">
+<script>
 
 var pass=prompt("Introduce la contraseña");
 
@@ -135,9 +135,9 @@ else{
      
     comprobar_matricula('1455ADB'); //ok
     
-		comprobar_matricula('1455A'); //ok
+    comprobar_matricula('1455A'); //ok
     
-		comprobar_matricula('14B'); //fail
+    comprobar_matricula('14B'); //fail
     
 </script>
 ~~~
