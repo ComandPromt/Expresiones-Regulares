@@ -42,7 +42,7 @@ codigoPostal.test (     '1');  // fail
 ## Ejemplo comprobar email
 
 ~~~js
-    let email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     email.test ('j.amj2000@gmail.com');            // ok
     email.test ('pepe_lopez@ventas.tienda.com');  // ok
@@ -140,4 +140,24 @@ else{
     comprobar_matricula('14B'); //fail
     
 </script>
+~~~
+
+- Java
+
+~~~java
+
+   public static boolean comprobarEmail(String email){
+
+
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", Pattern.CASE_INSENSITIVE);
+
+
+        Matcher matcher = pattern.matcher(email);
+
+
+        return matcher.find();
+
+
+    }
+    
 ~~~
