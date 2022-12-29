@@ -68,7 +68,11 @@ telefono.test ('609123456');  // ok
 
 # Contraseña segura
 
+~~~js
+
 ^((?=(.*[\d0-9\@\&#\$\?\%!\|(){}[\]]){2,})(?=(.*[a-zA-Z]){2,}).{8,})$
+
+~~~
 
 Crea un programa que pida al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos.
 
