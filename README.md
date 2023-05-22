@@ -2,7 +2,7 @@
 
 ## Regular Expresions
 
-# Comprobar URL
+# (JS) Comprobar URL
 
 ~~~js
 
@@ -18,7 +18,7 @@ document.write(url.test ('https://google.es/index.html')+"<br/>");//fail
 
 ~~~
 
-# Validación de teléfono
+# (JS) Validación de teléfono
 
 ~~~js
 
@@ -34,7 +34,7 @@ telefono.test ('609123456');  // ok
 
 ~~~
 
-# Ejemplo de validación de código postal
+# (JS) Ejemplo de validación de código postal
 
 ~~~js
 
@@ -50,7 +50,7 @@ telefono.test ('609123456');  // ok
 
 ~~~
 
-## Ejemplo comprobar email
+## (JS) Ejemplo comprobar email
 
 ~~~js
 
@@ -66,7 +66,7 @@ telefono.test ('609123456');  // ok
     
 ~~~
 
-# Contraseña segura
+# (JS) Contraseña segura
 
 ~~~js
 
@@ -112,7 +112,7 @@ Si cumple con todos los requisitos se considera una contraseña segura, de lo co
 
 ~~~
 
-# Comprobar Matricula
+# (JS) Comprobar Matricula
 
 ## Matricula de 5 números. El primer numero debe ser o 1,3,5,7 o 9 seguido de cuatro numeros y la letra P ó la S
 
@@ -150,7 +150,7 @@ Si cumple con todos los requisitos se considera una contraseña segura, de lo co
    
 ~~~
 
-## Matricula de 4 números seguido de una o varias letras en mayúscula
+## (JS) Matricula de 4 números seguido de una o varias letras en mayúscula
 
 ~~~js
 
@@ -184,11 +184,16 @@ Si cumple con todos los requisitos se considera una contraseña segura, de lo co
 
 ~~~
 
-- Java
+# Java
 
 ~~~java
 
-   public static boolean comprobarEmail(String email){
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Prueba {
+	
+    public static boolean comprobarEmail(String email){
 
 
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", Pattern.CASE_INSENSITIVE);
@@ -201,5 +206,90 @@ Si cumple con todos los requisitos se considera una contraseña segura, de lo co
 
 
     }
+	
+	public static void main(String[] args) {
+	
+		String texto = "En un lugggar de La Mancha de cuyo nombre no quiero acordarme";
+		
+		String texto1 = "shdfklashfklshgksdlghañl.";
+		
+		String patron;
+
+		patron = "mancha";
+		
+		busqueda(texto, patron);
+
+		// cualquiera de las palabras
+		patron = "lugar|ubicacion|sitio";
+		busqueda(texto, patron);
+
+		// una sola aparición
+		patron = ".dos";
+		busqueda(texto, patron);
+
+		// empieza por
+		patron = "^en";
+		busqueda(texto, patron);
+
+		// termina en
+		patron = "rdarme$";
+		busqueda(texto, patron);
+
+		// contiene dígito
+		patron = "\\d";
+		busqueda(texto, patron);
+
+		// contiene espacios
+		patron = "\\s";
+		busqueda(texto1, patron);
+
+		// empieza por
+		patron = "\\bnom";
+		busqueda(texto, patron);
+
+		// contine conjunto de caracteres
+		patron = "[x-z]";
+		busqueda(texto, patron);
+
+		// contine digitos del conjunto
+		patron = "[5-8]";
+		busqueda(texto, patron);
+
+		// contiene luggg
+		patron = "lug{3}";
+		busqueda(texto, patron);
+
+		// password
+		patron = "(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#%$&-]).{8,}";
+		texto = "3Az&23dt";
+		busquedaCase(texto, patron);
+
+		// email
+		patron = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+		texto = "test@gmail.com";
+		busquedaCase(texto, patron);
+	}
+
+	public static void busqueda(String texto, String patron) {
+		
+		Pattern miPatron = Pattern.compile(patron, Pattern.CASE_INSENSITIVE);
+		
+		Matcher miMatcher = miPatron.matcher(texto);
+		
+		System.out.println("Búsqueda (" + patron + ")-> " + miMatcher.find());
+	
+	}
+
+	public static void busquedaCase(String texto, String patron) {
+	
+		Pattern miPatron = Pattern.compile(patron);
+		
+		Matcher miMatcher = miPatron.matcher(texto);
+		
+		System.out.println("Búsqueda (" + patron + ")-> " + miMatcher.find());
+	
+	}
+
+}
     
 ~~~
